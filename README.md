@@ -1,18 +1,40 @@
 
-# DriverDrowsiness_Detection
-This is a project implementing Computer Vision and Deep Learning concepts to detect drowsiness of a driver and sound an alarm if drowsy.
+# Driver Drowsiness Detection 🚗💤
 
-• Built a model for drowsiness detection of a driver by real-time Eye-Tracking in videos using Haar Cascades and CamShift algorithm.
-• Used the significant features for each video frame extracted by CNN from the final pooling layer to stitch as a sequence of feature vectors for consecutive frames.
-• This sequence (2048-D) is given as an input to Long Short-Term Memory (LSTM) Recurrent Neural Networks (RNN), which predicts the drowsiness of the driver given the video sequence and sounds an alarm in such a case.
-• Optimized network weights by Adam Optimization algorithm.
-Technologies used: Python 2.7, OpenCV 3.3.0, Tensorflow, Keras, CNN, RNN, LSTM.
+This project uses **Computer Vision** and **Deep Learning** to detect driver drowsiness in real-time by tracking eye movements from video footage. If the system detects drowsiness, it triggers an alarm to alert the driver.
 
-Youtube Link: https://youtu.be/XFC7BJgYwH4
+---
 
-Steps to run this project:
-1. Run the run_extract_eyes.sh program to track the eyes for different videos(training data) and to store the patches of the eyes in a folder for every video. (Alert and Drowsy)
-2. Use this training data to retrain the CNN model(Inception V3 model).
-3. Run extract_features.py to extract the features from the second last layer of the CNN model which is a 2048-d vector and to create a sequence of frames as a single vector to be given as an input to the LSTM which is a part of Recurrent Neural Networks(RNN)
-4. Run data.py and models.py
-5. Finally run train.py to get the final predictions for the test sequence of data and the alarm will sound if the model predicts the sequence to be in a drowsy state
+### 🔍 Project Overview
+
+- Extracts eye regions from video frames using **Haar Cascades** and the **CamShift** tracking algorithm.
+- Uses a **Convolutional Neural Network (CNN)** (InceptionV3) to generate feature vectors (2048-D) from the eye regions.
+- These features are fed into an **LSTM model** (a type of RNN) to learn temporal patterns and detect drowsiness.
+- If the driver appears drowsy over time, the system triggers an **alarm**.
+
+---
+
+### 🧪 Technologies Used
+
+- Python 3.x
+- OpenCV
+- TensorFlow / Keras
+- NumPy
+- Matplotlib
+
+---
+
+### 📁 Project Structure
+
+```bash
+.
+├── Haar/                   # Haar cascade XML files
+├── data/                  # Input videos or training data
+├── eyedetection.py        # Extract eye regions using Haar & CamShift
+├── extract_features.py    # Generate CNN features from eye patches
+├── models.py              # Build LSTM model
+├── data.py                # Dataset preprocessing
+├── train.py               # Train the LSTM and trigger alarm
+├── run_extract_eyes.sh    # Shell script to automate eye extraction
+└── README.md              # You're reading it 🙂
+
